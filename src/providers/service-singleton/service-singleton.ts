@@ -39,7 +39,7 @@ export class ServiceSingletonProvider {
     })
       .catch(err => {
         console.log('Logging err');
-      })
+      });
 
       if(this.platform.is('cordova')) {
         this.sqlite.create({
@@ -47,7 +47,7 @@ export class ServiceSingletonProvider {
           location: 'default'
         }).then((db: SQLiteObject) => {
           db.executeSql('create table user_master(username VARCHAR(32), password VARCHAR(32))').then(res => {
-            console.log(`Table Created SuccdessFully`);
+            this.presentToast('Table Created SuccdessFully', true);
           })
           .catch(err => {
             console.log(`${err}`);
@@ -81,6 +81,15 @@ export class ServiceSingletonProvider {
           console.log('dismiss clicked');
         },
       }]
+    }).present();
+  }
+
+  presentToast(message: string, type: boolean) {
+    this.toast = this.toastCtrl.create({
+      message: `${message}`,
+      duration: 3000,
+      position: 'bottom',
+      cssClass: type ? 'success' : 'failure',
     }).present();
   }
 

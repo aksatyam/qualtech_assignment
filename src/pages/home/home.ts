@@ -14,6 +14,7 @@ export class HomePage {
   }
 
   refreshData() {
+    this.apiServices.presentToast('Getting data...', true);
     this.apiServices.getStorage('countryList').then(res => {
       if (res != null) {
         this.data = res;
