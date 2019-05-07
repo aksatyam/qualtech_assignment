@@ -35,7 +35,7 @@ export class HomePage {
           console.log(`${err}`)
         })
       }
-    }).catch(err =>{
+    }).catch(err => {
       console.log(`${err}`);
     })
   }
@@ -102,7 +102,7 @@ export class HomePage {
         }
       },
       {
-        text: 'Add',
+        text: 'Save',
         handler: data => {
           console.log(data);
           if (data.Country != null && data.Country != "") {
